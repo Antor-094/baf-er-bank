@@ -11,20 +11,30 @@ document.getElementById('btn-withdraw').addEventListener('click',function(){
     const previousWithdrawBalanceN = previousWithdrawBalance.innerText;
     const previousWithdrawBalanceF = parseFloat(previousWithdrawBalanceN)
    
-    const finalWithdrawBalance = withdrawBalanceAmount + previousWithdrawBalanceF;
+    
 
-    previousWithdrawBalance.innerText = finalWithdrawBalance;
-
-
+   
     const balanceTotalElement = document.getElementById('balance-total');
 
     const previousBalanceTotalN = balanceTotalElement.innerText;
     const previousBalanceTotal = parseFloat(previousBalanceTotalN)
+    withdrawBalanceElement.value = ''
+
+  if(withdrawBalanceAmount>previousBalanceTotal){
+    alert('Bap er bank ey eto taka nai!!')
+    return;
+  }
+
+  
+    const finalWithdrawBalance = withdrawBalanceAmount + previousWithdrawBalanceF;
+    previousWithdrawBalance.innerText = finalWithdrawBalance;
+
+
 
     const currentBalanceTotal = previousBalanceTotal - finalWithdrawBalance;
 
     balanceTotalElement.innerText = currentBalanceTotal;
     
-    withdrawBalanceElement.value = ''
+    
 
 })
